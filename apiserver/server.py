@@ -7,7 +7,8 @@ flname = "somename.bin"
 
 @app.route('/api/post',methods=['POST'])
 def api():
-    with open(flname,'wb+') as f:
+    content = None
+    with open(flname,'rb') as f:
         f.seek(0)
 
         try:
@@ -22,6 +23,8 @@ def api():
         
         print(content)
 
+
+    with open(flname,'wb') as f:
         pickle.dump(content,f)
 
 
