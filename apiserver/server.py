@@ -5,6 +5,14 @@ import pickle
 app = Flask(__name__)
 flname = "somename.bin"
 
+
+@app.route('/api/get')
+def get():
+    with open(flname,'rb') as f:
+        content = pickle.load(f)
+        return jsonify(content)
+    
+
 @app.route('/api/post',methods=['POST'])
 def api():
     content = None
@@ -15,11 +23,11 @@ def api():
             content = pickle.load(f)
         except EOFError:
             print('error')
-            content = {"field1":[request.form['field1']],"field2":[request.form['field2']]}
+            content = {"voltage":[request.form['field1']],"percent":[request.form['field2']]}
 
         else:
-            content["field1"].append(request.form['field1'])
-            content["field2"].append(request.form['field2'])
+            content["voltage"].append(request.form['field1'])
+            content["percent"].append(request.form['field2'])
         
         print(content)
 
