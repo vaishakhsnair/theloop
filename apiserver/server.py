@@ -1,15 +1,26 @@
 from flask import Flask,jsonify,request
+import pickle
 
 
 app = Flask(__name__)
 flname = "somename.bin"
 
-
 @app.route('/api/post',methods=['POST'])
 def api():
-    print(request.form.keys())
-    print(request.form['field1'])
-    print(request.form['field2'])
+    with open(flname,'wb+') as f:
+        content = pickle.load(f)
+        if len(content) == 0:
+            content = {"field1":[request.form['field1']],"field2":[request.form['field2']]}
+        else:
+            content["field1"].append(request.form['field1'])
+            content["field2"].append(request.form['field2'])
+        
+        print(content)
+
+        pickle.dump(content,f)
+
+
+        
 
 
 
