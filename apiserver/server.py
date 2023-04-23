@@ -2,11 +2,15 @@ from flask import Flask,jsonify,request
 
 
 app = Flask(__name__)
+flname = "somename.bin"
 
 
 @app.route('/api/post',methods=['POST'])
 def api():
     print(request.json)
+
+
+
     return jsonify({"response":"ok"})
 
 
