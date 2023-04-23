@@ -7,7 +7,7 @@ flname = "somename.bin"
 
 @app.route('/api/post',methods=['POST'])
 def api():
-    print(request.form)
+    print(request.form.keys())
 
 
 
