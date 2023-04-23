@@ -8,6 +8,9 @@ flname = "somename.bin"
 @app.route('/api/post',methods=['POST'])
 def api():
     print(request.form.keys())
+    print(request.form['field1'])
+    print(request.form['field2'])
+
 
 
 
