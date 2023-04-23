@@ -30,8 +30,7 @@ def api():
             content["percent"].append(request.form['field2'])
             content["valength"] = [i for i in range(len(content['percent']))]
         
-        print(content)
-
+        print(request.form['field1'],request.form['field2'])
 
     with open(flname,'wb') as f:
         pickle.dump(content,f)
