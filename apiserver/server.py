@@ -11,6 +11,7 @@ def api():
         try:
             content = pickle.load(f)
         except EOFError:
+            print('error')
             content = {"field1":[request.form['field1']],"field2":[request.form['field2']]}
 
         else:
