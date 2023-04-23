@@ -8,8 +8,9 @@ flname = "somename.bin"
 @app.route('/api/post',methods=['POST'])
 def api():
     with open(flname,'wb+') as f:
+        f.seek(0)
+
         try:
-            f.seek(0)
             content = pickle.load(f)
         except EOFError:
             print('error')
