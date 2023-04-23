@@ -9,6 +9,7 @@ flname = "somename.bin"
 def api():
     with open(flname,'wb+') as f:
         try:
+            f.seek(0)
             content = pickle.load(f)
         except EOFError:
             print('error')
