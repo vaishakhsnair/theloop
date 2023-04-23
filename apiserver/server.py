@@ -28,7 +28,7 @@ def api():
         else:
             content["voltage"].append(request.form['field1'])
             content["percent"].append(request.form['field2'])
-            content["valength"] = [i for i in range(len(content))]
+            content["valength"] = [i for i in range(len(content['percent']))]
         
         print(content)
 
