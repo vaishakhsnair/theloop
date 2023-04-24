@@ -23,14 +23,14 @@ def api():
             content = pickle.load(f)
         except EOFError:
             print('error')
-            content = {"voltage":[request.form['field1']],"percent":[request.form['field2']]}
+            content = {"voltage":[request.form['field1']],"percent":[request.form['field2']],"RawVolt":request.form['field3']}
 
         else:
             content["voltage"].append(request.form['field1'])
             content["percent"].append(request.form['field2'])
             content["valength"] = [i for i in range(len(content['percent']))]
         
-        print(request.form['field1'],request.form['field2'])
+        print(request.form['field1'],request.form['field2'],request.form['field3'])
 
     with open(flname,'wb') as f:
         pickle.dump(content,f)
